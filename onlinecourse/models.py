@@ -9,6 +9,11 @@ except Exception:
 from django.conf import settings
 import uuid
 
+from django.contrib import admin
+from .models import Question, Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
 
 # Instructor model
 class Instructor(models.Model):
@@ -97,13 +102,13 @@ class Enrollment(models.Model):
 
 # <HINT> Create a Question Model with:
 
-    class Question(models.Model):
-        course = models.ForeignKey(Course, on_delete=models.CASCADE)
-        question_text = models.CharField(max_length=200)
-        grade = models.IntegerField()
+class Question(models.Model):
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    question_text = models.CharField(max_length=200)
+    grade = models.IntegerField()
 
-        def __str__(self):
-            return self.question_text
+    def __str__(self):
+        return self.question_text
 
 
 
@@ -123,13 +128,13 @@ class Enrollment(models.Model):
 #  <HINT> Create a Choice Model with:
 
 
-    class Choice(models.Model):
-        question = models.ForeignKey(Question, on_delete=models.CASCADE)
-        choice_text = models.CharField(max_length=200)
-        is_correct = models.BooleanField()
+class Choice(models.Model):
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    choice_text = models.CharField(max_length=200)
+    is_correct = models.BooleanField()
 
-        def __str__(self):
-            return self.choice_text
+    def __str__(self):
+        return self.choice_text
 
 
 # <HINT> The submission model
