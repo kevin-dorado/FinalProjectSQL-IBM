@@ -9,11 +9,7 @@ except Exception:
 from django.conf import settings
 import uuid
 
-from django.contrib import admin
-from .models import Question, Choice
 
-admin.site.register(Question)
-admin.site.register(Choice)
 
 # Instructor model
 class Instructor(models.Model):
